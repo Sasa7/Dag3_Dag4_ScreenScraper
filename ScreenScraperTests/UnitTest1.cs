@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ScreenScraper;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace ScreenScraperTests
 {
@@ -18,7 +20,7 @@ namespace ScreenScraperTests
 
             //Act
 
-            var result = service.GetCompanyNameByOrgNumber(5565995239);
+            var result = service.GetCompanyNameByOrgNumber(orgNumber);
             //Assert
             Assert.AreEqual(expectedCompany, result);
         }
@@ -69,6 +71,36 @@ namespace ScreenScraperTests
 
             //ASSERT
             Assert.AreEqual(company, result);
+        }
+
+        [TestMethod]
+        public void TestAllCompanies()
+        {
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
+
+            Find_Company_AllaBolag_ByOrgNumber();
+            Find_Company_HittaSe_By_OrgNr();
+            Find_Company_Upplysning_By_OrgNr();
+
+            stopWatch.Stop();
+            Trace.WriteLine("Alla anrop sekventiellt: " + stopWatch.Elapsed);
+
+            stopWatch.Reset();
+
+            stopWatch.Start();
+
+            var tasks = new[]
+            {
+                Task.Factory.StartNew(Find_Company_AllaBolag_ByOrgNumber),
+                Task.Factory.StartNew(Find_Company_HittaSe_By_OrgNr),
+                Task.Factory.StartNew(Find_Company_Upplysning_By_OrgNr)
+            };
+
+            Task.WaitAll(tasks);
+            stopWatch.Stop();
+
+            Trace.WriteLine("Alla anrop parallellt: " + stopWatch.Elapsed);
         }
     }
 
