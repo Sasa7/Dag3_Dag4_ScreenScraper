@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="ScreenScrapingModel">
+  <useCaseModelRootMoniker Id="b51d1fb6-8843-48a9-955a-b0f30310266c" />
+  <nestedChildShapes>
+    <actorShape Id="0e3a1f76-9d22-4b83-8406-fa094b66a3ee" absoluteBounds="2.125, 2.25, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="0d37efbc-0f66-4c7a-aac4-b2a430e65cad" LastKnownName="User" />
+      <relativeChildShapes />
+    </actorShape>
+    <SubsystemShape Id="e6241dfb-5584-4c8c-b8bd-1b8f1afe6357" absoluteBounds="3.5, 1.75, 3, 2.5" customColor="White">
+      <subsystemMoniker Id="1f72b0ed-d0bb-4659-babe-f1914d24c6b9" LastKnownName="ScreenScrapingSystem" />
+      <nestedChildShapes>
+        <useCaseShape Id="45383b2d-8b1d-41ae-a2cf-d542b73078bc" absoluteBounds="4, 2.625, 1, 0.75" customColor="238, 237, 131" heightOffset="0">
+          <useCaseMoniker Id="b110a13a-45f2-4376-a3fc-d9787c9bc29a" LastKnownName="Receive Company Information" />
+          <relativeChildShapes />
+        </useCaseShape>
+      </nestedChildShapes>
+    </SubsystemShape>
+    <useCaseAssociationConnector edgePoints="[(2.625 : 2.55882352941176); (4.02292675620614 : 2.8877474720485)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+      <associationMoniker Id="6c561460-05c0-4898-82f7-93bdc3347329" />
+      <relativeChildShapes />
+      <nodes>
+        <actorShapeMoniker Id="0e3a1f76-9d22-4b83-8406-fa094b66a3ee" />
+        <useCaseShapeMoniker Id="45383b2d-8b1d-41ae-a2cf-d542b73078bc" />
+      </nodes>
+    </useCaseAssociationConnector>
+  </nestedChildShapes>
+</useCaseDiagram>

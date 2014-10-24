@@ -1,0 +1,22 @@
+﻿@model ScreenScraping.Web.Models.ScreenScraperViewModel
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+
+    @Html.LabelFor(m => m.SelectedListItem, "Select a value")
+    @Html.DropDownListFor(m => m.SelectedListItem, Model.DropDownItems)
+    @Html.TextBoxFor(model => model.ORGNumber)
+
+    <input type="submit" value="Find" />
+}
+
+
+@if (Model.CompanyName != null)
+{
+    @Model.CompanyName
+}
